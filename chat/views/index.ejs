@@ -28,7 +28,7 @@
         let usernameField = document.getElementById("username");
 
         var msg = msgField.value;
-        var username = username.value; // observar aqui em caso de erro seria var username = usernameField.value
+        var username = usernameField.value;
         
         socket.emit("msg", {msg: msg, username: username}); //console.log(input.value); enviando valor para backend
 
