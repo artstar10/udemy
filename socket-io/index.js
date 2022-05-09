@@ -5,6 +5,10 @@ var io = require("socket.io")(http);
 
 app.set("view engine", "ejs");
 
-app.get("/", (res, req) => {
+app.get("/", (req, res) => {
     res.render("index");
+})
+
+app.listen(3000, () => {
+    console.log("APP rodando!");
 })
