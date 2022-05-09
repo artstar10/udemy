@@ -9,8 +9,9 @@
 <body>
     <h1>Teste!</h1>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script><!-- essa versão 2.3.0 está com problemas no navegador-->
 <script>
     var socket = io("http://localhost:3000");// conectando socket do backend com frontend
+    socket.emit("boasvindas", {nome: "Arthur"});
 </script>
 </html>

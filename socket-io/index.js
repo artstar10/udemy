@@ -1,12 +1,16 @@
 var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var io = require('socket.io')(http, {allowEIO3: true});
 
 
-io.on("connection",(socket) => {
-    console.log(socket);
-    console.log(socket.id);
+io.on("connection",(socket) => {// evento de conexão
+      
+    socket.on("boasvindas", (data) => {
+        console.log("EXECUTANDO EVENTO DE BOAS VINDAS");
+        console.log(data);
+    })
+
 });
 
 
