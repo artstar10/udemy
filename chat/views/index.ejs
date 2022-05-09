@@ -13,7 +13,7 @@
     </div><br>
     <input type="text" name="" id="msg"><br>
     <input type="text" name="" id="username" placeholder="Seu nome de usuário">
-    <button>Enviar</button>
+    <button onclick="enviar()">Enviar</button>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script><!-- essa versão 2.3.0 está com problemas no navegador-->
 <script>
@@ -23,5 +23,15 @@
         console.log("Desconectado");
     });
 
+    function enviar(){
+        let msgField = document.getElementById("msg");
+        let usernameField = document.getElementById("username");
+
+        var msg = msgField.value;
+        var username = username.value; // observar aqui em caso de erro seria var username = usernameField.value
+        
+        socket.emit("msg", {msg: msg, username: username}); //console.log(input.value); enviando valor para backend
+
+    }
 </script>
 </html>
