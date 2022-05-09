@@ -9,6 +9,11 @@ io.on("connection",(socket) => {// evento de conexão
     socket.on("disconnect",() => {
         console.log("x desconectou: " + socket.id);
     });
+
+    socket.on("msg", (data) => {
+        socket.emit("showmsg", data);
+        console.log(data);
+    });
 });
 
 
