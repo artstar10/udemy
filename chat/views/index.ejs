@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="palavra" oninput="enviar()">
+    <button onclick="">Enviar</button>
+    <hr>
+    <p id="resultado"></p><!-- RESULTADO DO CLIENTE -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script><!-- essa versão 2.3.0 está com problemas no navegador-->
+<script>
+    var socket = io("http://localhost:3000");// conectando socket do backend com frontend
+    socket.on("disconnect",() => {
+        console.log("Desconectado");
+    });
+
+    socket.emit("boasvindas", {nome: "Arthur"});
+
+    socket.on("resultado",(data) => {// sempre que um evento chamado resultado acontecer executamos a função
+        console.log(data);
+
+        let p = document.getElementById("resultado");
+        p.innerHTML = data;
+
+    });
+
+    function enviar(){
+        let input = document.getElementById("palavra");
+        socket.emit("palavra", input.value) //console.log(input.value); enviando valor para backend
+    }
+
+</script>
+</html>
