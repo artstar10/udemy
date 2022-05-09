@@ -11,6 +11,11 @@ io.on("connection",(socket) => {// evento de conexão
         console.log(data);
     })
 
+    socket.on("palavra",(data) => {
+        console.log(data);
+        socket.emit("resultado", data + " - DESENVOLVEDOR!");
+    });
+
 });
 
 
