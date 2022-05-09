@@ -6,6 +6,11 @@ var io = require('socket.io')(http, {allowEIO3: true});
 
 io.on("connection",(socket) => {// evento de conexão
       
+    socket.on("disconnect",() => {
+        console.log("x desconectou: " + socket.id);
+    });
+
+
     socket.on("boasvindas", (data) => {
         console.log("EXECUTANDO EVENTO DE BOAS VINDAS");
         console.log(data);
