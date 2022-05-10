@@ -11,7 +11,7 @@ io.on("connection",(socket) => {// evento de conexão
     });
 
     socket.on("msg", (data) => {
-        socket.emit("showmsg", data);
+        io.emit("showmsg", data);
         console.log(data);
     });
 });
